@@ -2,7 +2,7 @@
  * SoftwarePWMExample.c
  *
  *  Created on: Feb 18, 2023
- *      Author: Russell Trafford
+ *      Author: Brandon Tran
  *
  *      This example controls the LED connected to Pin 1.0 by PWM. You can change
 the DutyCycle Global variable to change the brightness of the LED. You should vary
@@ -64,11 +64,11 @@ __interrupt void Port_2(void)
 {
     P2IFG &= ~BIT3;                            // Clear P2.3 interrupt flag
 
-    if (TB0CCR1 >= 1000) {
+    if (TB0CCR1 >= 1000) { //If brightness is at maximum value, change it back to it's lowest brightness
         TB0CCR1 = 1;
     }
     else {
-        TB0CCR1 += 100;
+        TB0CCR1 += 100;  //Increase brightness by 10%
     }
 }
 
@@ -77,11 +77,11 @@ __interrupt void Port_2(void)
 __interrupt void Port_4(void)
 {
     P4IFG &= ~BIT1;                         // Clear P4.1 interrupt flag
-    if (TB1CCR1 >= 1000) {
+    if (TB1CCR1 >= 1000) { //If brightness is at maximum value, change it back to it's lowest brightness
             TB1CCR1 = 1;
         }
         else {
-            TB1CCR1 += 100;
+            TB1CCR1 += 100;  //Increase brightness by 10%
         }
 }
 
