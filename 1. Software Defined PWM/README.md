@@ -34,4 +34,5 @@ There needs to be a limit when the LEDs' duty cycles are incremented to 100%. Wh
     }
 
 **How to use the code**
+
 First, load the code into code composer or another compiler of your choosing. Next, upload the code to the MSP430FR2355. The LEDs should begin at 50 percent brightness. Pin 2.3 is used to increment the red LED duty cycle by 10% and Pin 4.1 for the green LED. The duty cycle will increase for every button press until it hits 100% duty cycle. The next button press after 100% will reset the duty cycle to 0. From there on, the cycle of reaching to 100% duty cycle will repeat.
