@@ -1,3 +1,5 @@
+# Author: Brandon Tran
+
 # What is the code?
 This code makes an RGB LED fade between 6 colors using a hardware pwm. The colors are:
 
