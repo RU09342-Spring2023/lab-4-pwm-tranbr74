@@ -1,8 +1,6 @@
-# Hardware PWM
-Now that you have done the software version of PWM, now it is time to start leveraging the other features of these Timer Modules to control several pins without needing your processor to do so.
+# What is the code?
+This code makes an RGB LED fade between 6 colors using a hardware pwm. The colors are:
 
-## Task
-You will need to use pins 6.0, 6.1, and 6.2 to drive an RGB LED. These will need to be configured with a PWM Period of 1ms. You need your RGB LED to cycle between the following colors in order:
 - Red
 - Orange (Red + Green)
 - Green
@@ -10,10 +8,19 @@ You will need to use pins 6.0, 6.1, and 6.2 to drive an RGB LED. These will need
 - Blue
 - Purple (Red + Blue)
 
-You need to cover colors in between them, meaning as you transition from Red to Orange, it shouldn't be just 2 colors. The amount of colors are up to you, but is needs to appear smooth in transition. The timing for cycling is up to you to determine as well.
+## What was used?
+- Pin 6.0 is set to an output, select 0 is high, select 1 is low, toggled by Timer B3 interrupt. This would control the Red LED of the RGB LED.
+- Pin 6.1 is set to an output, select 0 is high, select 1 is low, toggled by Timer B3 interrupt. This would control the Blue LED of the RGB LED.
+- Pin 6.2 is set to an output, select 0 is high, select 1 is low, toggled by Timer B3 interrupt. This would control the Green LED of the RGB LED.
+- Timer B0 Peripheral: Set to TB0CCR0 interrupt, ACLK, continuous, and divided by 8.
+- Timer B3 Peripheral: Set to TB3CCR0 interrupt, SMCLK, up mode, out mode 7.
 
-## Deliverables
-You will need to upload the .c file and a README explaining your code and any design decisions made.
+### Design Considerations
+The registers of the MSP430FR2355 can only go up to to only 16-bits, causing issues because timer B0 will reach that value eventually with/without a clock divider. This can be solved by resetting the register to a starting point ever time it reachest 65,535 (decimal of 16 bits).
 
-### Hints
-You will need to use the CCR registers in order to accomplish this. You may also want to use a second TIMER module to determine how fast your LED colors cycle.
+Resistors are used to create the circuit as running the code can cause damage to the operating device such as my computer. Without resistors though, the changes in colors for the LEDs are very apparanet and clear.
+
+Timer B0 has an offset of 8 to slow the speed of the fading LED. Larger numbers will make the fading slower while smaller numbers make the fading faster.
+
+#### How to use
+First, load the code into code composer and upload it to the MSP430FR2355. Attach the anode of the common anode RGB LED to ground and connect the LED pins and (resistors if needed) to their corresponding pins on the board. When the circuit is properly completed, the LEDs will fade from red to orange to green to cyan to blue to purple and back indefinitely as long as the anode of the RGB LED is grounded and the pins of the board are connected to red, blue, and green.
