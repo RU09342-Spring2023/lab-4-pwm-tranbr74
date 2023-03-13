@@ -7,6 +7,7 @@
 This code uses a software PWM to control the brightness a red LED and a green LED. There are two buttons (P4.1 and P2.3) that determines the brightness of the LEDs with the push of the respected buttons. There 10 different levels of brightness and each level of brightness is changed one at a time per button press. When the LEDs reach their maximum brightness, they will reset to its lowest brightness.
 
 ***What was used?***
+
 Pin 1.0 (Red LED) is set to an output, toggled by Timer B0interrupt, brightness is changed by Pin 2.3.
 
 Pin 6.6 (Green LED) is set to an output, toggled by Timer B1interrupt, brightness is changed by Pin 4.1.
