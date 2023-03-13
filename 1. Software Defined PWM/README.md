@@ -16,10 +16,10 @@ Pin 2.3 is set to an input, pullup resistor enabled, interrupt enabled, falling 
 
 Pin 4.1 is set to an input, pullup resistor enabled, interrupt enabled, falling edge.
 
-Timer B0 Peripheral
+Timer B0 Peripheral:
 Set to TB0CCR1 interrupt, SMCLK, up mode.
 
-Timer B1 Peripheral
+Timer B1 Peripheral:
 Set to TB1CCR1 interrupt, SMCLK, up mode.
 
 ***Design Constraints***
