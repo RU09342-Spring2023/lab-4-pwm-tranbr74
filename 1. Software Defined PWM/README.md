@@ -1,6 +1,6 @@
-***Author: Brandon Tran
+***Author: Brandon Tran***
 
-Lab: Software Defined PWM: ***
+
 
 ***What's happenning?***
 This code uses a software PWM to control the brightness a red LED and a green LED. There are two buttons (P4.1 and P2.3) that determines the brightness of the LEDs with the push of the respected buttons. There 10 different levels of brightness and each level of brightness is changed one at a time per button press. When the LEDs reach their maximum brightness, they will reset to its lowest brightness.
@@ -50,7 +50,7 @@ __interrupt void Port_4(void)
         else {
             TB1CCR1 += 100;  //Increase brightness by 10%
         }
-}
-``
+}``
+
 **How to use the code**
 First, load the code into code composer or another compiler of your choosing. Next, upload the code to the MSP430FR2355. The LEDs should begin at 50 percent brightness. Pin 2.3 is used to increment the red LED duty cycle by 10% and Pin 4.1 for the green LED. The duty cycle will increase for every button press until it hits 100% duty cycle. The next button press after 100% will reset the duty cycle to 0. From there on, the cycle of reaching to 100% duty cycle will repeat.
