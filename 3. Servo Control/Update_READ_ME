@@ -1,0 +1,17 @@
+# Brandon Tran
+
+# Servo Control
+The code is used to control the angle of a servo by controlling the duty cycles of the buttons. The angle increases with the press of one button and decreases for another.
+
+## What was used
+-Pin 2.3 Button: Increases duty cycle.
+  -Set up as an input button with a pull up resistor, and interrupt enabled
+ -Pin 4.1 Button: Decreases duty cycle.
+  -Set up as an input button with a pull up resistor, and interrupt enabled
+ -Pin 6.0, Servo output pin
+  -Set up as an output
+ -Timer B0
+  -Set up as SCLK and UP Mode with interrupt enables from TB0CCLT1 and TB0CCLT2 
+
+## How to use the code
+First, load the code into code composer and run it with the MSP430FR2355. Connect the servo's ground to the board's ground with a jumper wire. Connect the servo's power pin to the board's 5V pin with a jumper wire. Connect the servo's signal to the pin 6.0 on the board. With that done, the circuit is complete and by pushing pin 2.3, the angle is increased by an angle of 1 while pushing pin 4.1 will decrease the angle by 1 degree. This is done until the servo has reached its maximum rotation either clockwise or counter clockwise.
